@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "1675608b-fd50-42b6-b020-be0efeafc8fb",
+		"name": "productsapp-automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43598494",
+		"_collection_link": "https://myranguyen.postman.co/workspace/Myra-Nguyen's-Workspace~5ecdf104-151c-43fe-8f89-fd1acf00380b/collection/43598494-1675608b-fd50-42b6-b020-be0efeafc8fb?action=share&source=collection_link&creator=43598494"
+	},
+	"item": [
+		{
+			"name": "Get All Products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"// Test that the response status is 200 OK\r",
+							"pm.test(\"Response to be 200 OK\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// 1. Testing the First Object (jsonData[0])\r",
+							"pm.test(\"First object: Id should be 1\", () => {\r",
+							"    pm.expect(jsonData[0].Id).to.equal(1);\r",
+							"});\r",
+							"pm.test(\"First object: Name should be 'Tomato Soup'\", () => {\r",
+							"    pm.expect(jsonData[0].Name).to.equal(\"Tomato Soup\");\r",
+							"});\r",
+							"pm.test(\"First object: Category should be 'Groceries'\", () => {\r",
+							"    pm.expect(jsonData[0].Category).to.equal(\"Groceries\");\r",
+							"});\r",
+							"pm.test(\"First object: Price should be 1.0\", () => {\r",
+							"    pm.expect(jsonData[0].Price).to.equal(1.0);\r",
+							"});\r",
+							"\r",
+							"// 2.Testing the Second Object (jsonData[1])\r",
+							"pm.test(\"Second object: Id should be 2\", () => {\r",
+							"    pm.expect(jsonData[1].Id).to.equal(2);\r",
+							"});\r",
+							"pm.test(\"Second object: Name should be 'Yo-yo'\", () => {\r",
+							"    pm.expect(jsonData[1].Name).to.equal(\"Yo-yo\");\r",
+							"});\r",
+							"pm.test(\"Second object: Category should be 'Toys'\", () => {\r",
+							"    pm.expect(jsonData[1].Category).to.equal(\"Toys\");\r",
+							"});\r",
+							"pm.test(\"Second object: Price should be 3.75\", () => {\r",
+							"    pm.expect(jsonData[1].Price).to.equal(3.75);\r",
+							"});\r",
+							"\r",
+							"// 3. Testing the Third Object (jsonData[2])\r",
+							"pm.test(\"Third object: Id should be 3\", () => {\r",
+							"    pm.expect(jsonData[2].Id).to.equal(3);\r",
+							"});\r",
+							"pm.test(\"Third object: Name should be 'Hammer'\", () => {\r",
+							"    pm.expect(jsonData[2].Name).to.equal(\"Hammer\");\r",
+							"});\r",
+							"pm.test(\"Third object: Category should be 'Hardware'\", () => {\r",
+							"    pm.expect(jsonData[2].Category).to.equal(\"Hardware\");\r",
+							"});\r",
+							"pm.test(\"Third object: Price should be 16.99\", () => {\r",
+							"    pm.expect(jsonData[2].Price).to.equal(16.99);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44399/api/products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44399",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"// Test if the response is 200 OK\r",
+							"pm.test(\"Response to be 200 OK\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// 1. Test if the property 'Id' exists and is a number\r",
+							"pm.test(\"Property 'Id' should exist in the response body\", () => {\r",
+							"    pm.expect(jsonData).to.have.property('Id');\r",
+							"    pm.expect(jsonData.Id).to.be.a(\"number\");\r",
+							"});\r",
+							"\r",
+							"// 2. Test if the property 'Name' exists and is a string\r",
+							"pm.test(\"Property 'Name' should exist in the response body\", () => {\r",
+							"    pm.expect(jsonData).to.have.property('Name');\r",
+							"    pm.expect(jsonData.Name).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// 3. Test if the property 'Category' exists and is a string\r",
+							"pm.test(\"Property 'Category' should exist in the response body\", () => {\r",
+							"    pm.expect(jsonData).to.have.property('Category');\r",
+							"    pm.expect(jsonData.Category).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// 4. Test if the property 'Price' exists and is a number\r",
+							"pm.test(\"Property 'Price' should exist in the response body\", () => {\r",
+							"    pm.expect(jsonData).to.have.property('Price');\r",
+							"    pm.expect(jsonData.Price).to.be.a(\"number\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44399/api/products/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44399",
+					"path": [
+						"api",
+						"products",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
